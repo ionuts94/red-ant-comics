@@ -12,9 +12,9 @@ const ComicsContainer = ({ comicsData }) => {
     return (
         <ul id="comics-list" className="comics-list">
             {
-                comicsData.map(result => {
+                comicsData.map(comic => {
                     const key = uuid();
-                    return <ComicCard key={key} item={result} />
+                    return <ComicCard key={key} comic={comic} />
                 })
             }
         </ul>

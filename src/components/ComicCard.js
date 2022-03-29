@@ -5,10 +5,10 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { handleFavourites } from '../redux/app';
 
-const ComicCard = ({ item }) => {
+const ComicCard = ({ comic }) => {
     const dispatch = useDispatch();
-    const isFavourite = useSelector(state => state.app?.favourites?.find(character => character.id === item.id));
-    const imgUrl = `${item.thumbnail.path}/portrait_xlarge.${item.thumbnail.extension}`;
+    const isFavourite = useSelector(state => state.app?.favourites?.find(character => character.id === comic.id));
+    const imgUrl = `${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`;
 
     return (
         <>
@@ -16,10 +16,10 @@ const ComicCard = ({ item }) => {
             <li className="comic-item">
                 <div className="comic-card">
                     <img src={imgUrl} />
-                    <h2>{item.title}</h2>
+                    <h2>{comic.title}</h2>
                     <button 
                         className="button js-add"
-                        onClick={() => dispatch(handleFavourites(item))}
+                        onClick={() => dispatch(handleFavourites(comic))}
                     >
                         { isFavourite 
                             ? "Remove from favourites"
